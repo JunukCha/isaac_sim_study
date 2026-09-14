@@ -1,44 +1,20 @@
-from isaacsim import SimulationApp
-from isaacsim.storage.native import get_assets_root_path
+import sys
+from pathlib import Path
+
+# Add python_scripts directory to Python module search path
+PYTHON_SCRIPTS_DIR = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(PYTHON_SCRIPTS_DIR))
+
+from utils.live_stream import simulation_app
+
 import time
 
-
-# ---------------------------------------------------------
-# Isaac Sim configuration
-# ---------------------------------------------------------
-CONFIG = {
-    "width": 1280,
-    "height": 720,
-    "window_width": 1920,
-    "window_height": 1080,
-    "headless": True,
-    "hide_ui": False,
-    "renderer": "RealTimePathTracing",
-    "display_options": 3286,
-}
-
-
-# ---------------------------------------------------------
-# Start Isaac Sim
-# ---------------------------------------------------------
-simulation_app = SimulationApp(CONFIG)
-
-
 # Isaac Sim modules must be imported after SimulationApp
+from isaacsim.storage.native import get_assets_root_path
 import omni.usd
 import carb
 
 from pxr import UsdGeom, UsdLux, Gf
-from isaacsim.core.experimental.utils.app import enable_extension
-
-
-# ---------------------------------------------------------
-# Livestream
-# ---------------------------------------------------------
-simulation_app.set_setting("/app/window/drawMouse", True)
-
-enable_extension("omni.kit.livestream.app")
-
 
 # ---------------------------------------------------------
 # Get stage
@@ -205,9 +181,12 @@ franka_prim.GetReferences().AddReference(franka_usd)
 
 # Place Franka in front of the table
 franka_xform = UsdGeom.Xformable(franka_prim)
-franka_xform.AddTranslateOp().Set(
-    Gf.Vec3d(-0.35, 0.0, 0.0)
-)
+trans_attr = franka_prim.GetAttribute("xformOp:translate")
+trans_attr.Set(Gf.Vec3d(-0.35, 0.0, 0.0))
+
+# franka_xform.AddTranslateOp().Set(
+#     Gf.Vec3d(-0.35, 0.0, 0.0)
+# )
 
 carb.log_warn("Franka added.")
 
