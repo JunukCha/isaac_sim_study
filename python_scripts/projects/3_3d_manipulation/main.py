@@ -1,4 +1,6 @@
 from isaacsim import SimulationApp
+from isaacsim.storage.native import get_assets_root_path
+import time
 
 
 # ---------------------------------------------------------
@@ -188,6 +190,26 @@ create_cube(
     color=(0.1, 0.85, 0.2),
 )
 
+# ---------------------------------------------------------
+# Add Franka
+# ---------------------------------------------------------
+assets_root = get_assets_root_path()
+
+franka_usd = (
+    assets_root
+    + "/Isaac/Robots/FrankaRobotics/FrankaPanda/franka.usd"
+)
+
+franka_prim = stage.DefinePrim("/World/Franka", "Xform")
+franka_prim.GetReferences().AddReference(franka_usd)
+
+# Place Franka in front of the table
+franka_xform = UsdGeom.Xformable(franka_prim)
+franka_xform.AddTranslateOp().Set(
+    Gf.Vec3d(-0.35, 0.0, 0.0)
+)
+
+carb.log_warn("Franka added.")
 
 # ---------------------------------------------------------
 # Lighting
@@ -214,8 +236,14 @@ carb.log_warn(
 # ---------------------------------------------------------
 # Main loop
 # ---------------------------------------------------------
+start_time = time.time()
+duration = 60.0  # seconds
+
 while simulation_app.is_running():
     simulation_app.update()
+
+    if time.time() - start_time >= duration:
+        break
 
 
 # ---------------------------------------------------------
