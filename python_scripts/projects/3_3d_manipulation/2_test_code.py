@@ -624,6 +624,7 @@ while simulation_app.is_running():
 
     elif state == ManipulationState.DONE:
         desired_position = lift_position
+        open_gripper()
 
 
     # -------------------------------------------------------------------------
