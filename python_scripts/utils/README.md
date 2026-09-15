@@ -19,7 +19,7 @@ Importing the module immediately launches `SimulationApp`.
 Prints environment entries containing `49100`, `47998`, or `PUBLIC_IP`:
 
 ```bash
-<ISAAC_SIM>/python.sh python_scripts/utils/check_port.py
+python3 python_scripts/utils/check_port.py
 ```
 
 Despite its name, this script does **not** inspect listening sockets. It helps verify whether livestream-related port or public-IP values are present in the process environment.

@@ -11,7 +11,7 @@ A collection of hands-on NVIDIA Isaac Sim exercises covering scene creation, rob
 | [0_tutorial](python_scripts/projects/0_tutorial/) | Basic scenes, objects, and Franka examples |
 | [1_pick_place](python_scripts/projects/1_pick_place/) | Pick-and-place with Franka or UR10 |
 | [2_spot](python_scripts/projects/2_spot/) | Policy-driven Spot locomotion |
-| [3_3d_manipulation](python_scripts/projects/3_3d_manipulation/) | Franka manipulation using Lula IK |
+| [3_3d_manipulation](python_scripts/projects/3_3d_manipulation/) | Lula IK Franka motion and physics-based grasp, lift, and release experiments |
 
 ## Requirements
 

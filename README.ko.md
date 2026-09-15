@@ -11,7 +11,7 @@ NVIDIA Isaac Sim으로 장면 생성, 로봇 이동, pick-and-place, 역기구�
 | [0_tutorial](python_scripts/projects/0_tutorial/README.ko.md) | 기본 장면, 오브젝트 및 Franka 예제 |
 | [1_pick_place](python_scripts/projects/1_pick_place/README.ko.md) | Franka 또는 UR10 pick-and-place |
 | [2_spot](python_scripts/projects/2_spot/README.ko.md) | 정책 기반 Spot 이동 |
-| [3_3d_manipulation](python_scripts/projects/3_3d_manipulation/README.ko.md) | Lula IK 기반 Franka 매니퓰레이션 |
+| [3_3d_manipulation](python_scripts/projects/3_3d_manipulation/README.ko.md) | Lula IK 기반 Franka 이동과 물리 기반 파지·들어 올리기·놓기 실험 |
 
 ## 요구 사항
 

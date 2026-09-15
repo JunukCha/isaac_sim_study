@@ -19,7 +19,7 @@ from utils.live_stream import simulation_app
 환경 변수 중 `49100`, `47998`, `PUBLIC_IP`가 포함된 항목을 출력합니다.
 
 ```bash
-<ISAAC_SIM>/python.sh python_scripts/utils/check_port.py
+python3 python_scripts/utils/check_port.py
 ```
 
 파일 이름과 달리 이 스크립트는 실제 리스닝 소켓을 조회하지 않습니다. Livestream 관련 포트 또는 공인 IP 값이 프로세스 환경에 설정되어 있는지 확인하는 용도입니다.
